@@ -18,7 +18,6 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String index() {
 		
-		
 		return "main/index";	// */* -> main/index.jsp
 	}
 	

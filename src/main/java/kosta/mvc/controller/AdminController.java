@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import kosta.mvc.model.movie.dto.MovieDTO;
-import kosta.mvc.model.movie.service.MovieService;
+import kosta.mvc.model.dto.MovieDTO;
+import kosta.mvc.model.service.MovieService;
 
 
 @Controller
