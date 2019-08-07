@@ -1,28 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-		<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+<!--  중복 로그인 방지 설정을 위해 서블릿컨텍스트 차원에서 security 정보를 로딩한다   -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-		/WEB-INF/spring/root-context.xml
-	 	/WEB-INF/spring/appServlet/security-context.xml
+			classpath:com/domain/config/spring-db.xml
+			classpath:com/domain/config/spring-security.xml
 		</param-value>
 	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
-	<!-- Processes application requests -->
+   
+	<!-- Spring Filter 한글처리 등록 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  
+  <!-- Spring Security 등록 -->
+   <filter>   
+    	<filter-name>springSecurityFilterChain</filter-name>
+    	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    	<filter-name>springSecurityFilterChain</filter-name>
+    	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>
-			/WEB-INF/spring/appServlet/servlet-context.xml
-			/WEB-INF/spring/appServlet/updown-context.xml
-			/WEB-INF/spring/appServlet/mybatisTransaction-context.xml
-			</param-value>
+			<param-value>classpath:com/domain/config/spring-web.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -32,34 +56,4 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-
-	<!-- Spring Security Filter 등록하기 -->
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> 
-	
-	
-	<!--  post방식 한글 인코딩 설정 -->
-	<filter>
-		<filter-name>charaterEncoding</filter-name>
-		<filter-class>
-			org.springframework.web.filter.CharacterEncodingFilter
-		</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>charaterEncoding</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> 
-	
 </web-app>
