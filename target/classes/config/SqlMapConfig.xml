@@ -8,10 +8,12 @@
 	<typeAliases>
 		<typeAlias type="muin.mvc.model.dto.MemberVO" alias="member"/>
 		<typeAlias type="muin.mvc.model.dto.AuthorityVO" alias="authority"/>
+		<typeAlias type="muin.mvc.model.dto.RecommendDTO" alias="recommend"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="sql/memberMapper.xml"/>
 		<mapper resource="sql/authoritiesMapper.xml"/>
+		<mapper resource="sql/recommendMapper.xml"/>
 	</mappers>
 </configuration>
