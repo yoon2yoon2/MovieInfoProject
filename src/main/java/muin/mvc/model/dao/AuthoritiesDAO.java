@@ -6,9 +6,9 @@ package muin.mvc.model.dao;
 
 import java.util.List;
 
-import muin.mvc.model.dto.AuthorityVO;
+import muin.mvc.model.dto.AuthorityDTO;
 
 public interface AuthoritiesDAO {
-	int insertAuthority(AuthorityVO authority);
-	List<AuthorityVO> selectAuthorityByUserName(String username);
+	int insertAuthority(AuthorityDTO authority);
+	List<AuthorityDTO> selectAuthorityByUserName(String username);
 }

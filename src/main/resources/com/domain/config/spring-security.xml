@@ -17,8 +17,8 @@
 	<sec:form-login
 		login-page="/loginForm"
 		login-processing-url="/j_spring_security_check"
-		username-parameter="id"
-		password-parameter="password"
+		username-parameter="memberEmail"
+		password-parameter="memberPwd"
 		default-target-url="/"
 		authentication-failure-handler-ref="memberAuthenticationFailureHandler"
 	/>

@@ -8,9 +8,6 @@
 </head>
 <body>
 <b>Member Information <br>
-ID : ${vo.id}<br>
-NAME : ${vo.name}<br>
-ADDRESS : ${vo.address}<br>
 </b>
 </body>
 </html>

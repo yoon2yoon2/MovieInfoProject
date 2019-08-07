@@ -2,40 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
 	<sql id="selectMember">
- 		select id,password,name,address from security_member
+ 		select member_Id,member_pwd,member_name,member_email from member
  	</sql>
  	
- 	<select id="getAddressList" resultType="string">
+<!--  	<select id="getAddressList" resultType="string">
  		select distinct address from security_member
  	</select>
  	<select id="findMemberListByAddress" resultType="member">
  		select id,name from security_member
  		where address=#{value}
  	</select>
- 	
- 	<select id="login" resultType="member" parameterType="member">
- 		<include refid="selectMember"></include>
- 		where id=#{id} and password=#{password}
- 	</select>
- 	<select id="getMemberCount" resultType="int">
- 		select count(*) from security_member
- 	</select>
  	<update id="updateMember" parameterType="member">
 		update security_member set password=#{password},name=#{name},address=#{address}
 		where id=#{id}
-	</update>
+	</update> 
+ 	-->
+ 	<select id="login" resultType="member" parameterType="member">
+ 		<include refid="selectMember"></include>
+ 		where member_email=#{memberEmail} and member_Pwd=#{memberPwd}
+ 	</select>
+ 	<select id="getMemberCount" resultType="int">
+ 		select count(*) from member
+ 	</select>
+ 	
+ 
 	<insert id="registerMember" parameterType="member">
-		insert into security_member(id,password,name,address)
-		values(#{id},#{password},#{name},#{address})
+		insert into member(member_Id,member_pwd,member_name,member_email)
+		values(member_id_seq.nextval,#{memberPwd},#{memberName},#{memberEmail})
 	</insert>
-	<select id="idcheck" resultType="int">
-		select count(*) from security_member where id=#{value}
+ 	<select id="idcheck" resultType="int">
+		select count(*) from member where member_email=#{value}
 	</select>
 	
 	<select id="findMemberById" resultType="member">
- 		SELECT	id,	password,	name, address
-		FROM	security_member
-		WHERE 	id=#{value}				
+ 		SELECT	member_id,	member_pwd,	member_name, member_email
+		FROM	member
+		WHERE 	member_email=#{value}				
  	</select>
 </mapper>
 

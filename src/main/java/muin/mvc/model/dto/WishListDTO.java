@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class WishListVO {
+public class WishListDTO {
 	private int wishNo;              //찜리스트 번호
 	private String wishMovie;        //영화제목
 	private String wishDirector;	 //감독

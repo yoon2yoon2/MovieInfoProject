@@ -2,25 +2,26 @@ package muin.mvc.model.service;
 
 import java.util.List;
 
-import muin.mvc.model.dto.AuthorityVO;
-import muin.mvc.model.dto.MemberVO;
+
+import muin.mvc.model.dto.AuthorityDTO;
+import muin.mvc.model.dto.MemberDTO;
 
 public interface MemberService {
-	MemberVO findMemberById(String id);
+	MemberDTO findMemberById(String id);
 
 	List<String> getAddressList();
 
-	List<MemberVO> findMemberListByAddress(String address);
+	List<MemberDTO> findMemberListByAddress(String address);
 
-	MemberVO login(MemberVO memberVO);
+	MemberDTO login(MemberDTO memberVO);
 
 	int getMemberCount();
 
-	void updateMember(MemberVO vo);
+	void updateMember(MemberDTO vo);
 
-	void registerMember(MemberVO vo);
+	void registerMember(MemberDTO vo);
 
 	String idcheck(String id);
 	
-	List<AuthorityVO> selectAuthorityByUsername(String username);
+	List<AuthorityDTO> selectAuthorityByUsername(String username);
 }

@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import muin.mvc.model.dto.AuthorityVO;
+import muin.mvc.model.dto.AuthorityDTO;
 
 
 @Repository
@@ -16,12 +16,12 @@ public class AuthoritiesDAOImpl implements AuthoritiesDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public int insertAuthority(AuthorityVO authority) {
+	public int insertAuthority(AuthorityDTO authority) {
 		return sqlSession.insert("authoritiesMapper.insertAuthority", authority);
 	}
 
 	@Override
-	public List<AuthorityVO> selectAuthorityByUserName(String username) {
+	public List<AuthorityDTO> selectAuthorityByUserName(String username) {
 		return sqlSession.selectList("authoritiesMapper.selectAuthorityByUserName", username);
 	}
 

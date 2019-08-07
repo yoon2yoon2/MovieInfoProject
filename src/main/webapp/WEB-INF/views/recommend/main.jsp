@@ -33,8 +33,8 @@ $(function(){
 		user_id,Movie_no,recommend_grade를 table에 insert해줍니다.
 	</h3>
 	<form method="post">
-		<input type="hidden" id="memberId" value="1111" name="memberId"/>
-		<input type="hidden" id="movieNo" value="5555" name="movieNo"/>
+		<input type="hidden" id="memberId" value="1234" name="memberId"/> <!-- value 하드코딩 하였습니다. 나중에 얻어와야함. -->
+		<input type="hidden" id="movieNo" value="4321" name="movieNo"/>
 		<select id="recommendGrade" name="recommendGrade">
 			<option value="">---별점 선택---</option>
 			<option value="1">★☆☆☆☆</option>

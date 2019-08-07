@@ -2,18 +2,15 @@ package muin.mvc.model.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import muin.mvc.model.dao.AuthoritiesDAO;
 import muin.mvc.model.dao.MemberDAO;
-import muin.mvc.model.dto.AuthorityVO;
-import muin.mvc.model.dto.MemberVO;
+import muin.mvc.model.dto.AuthorityDTO;
+import muin.mvc.model.dto.MemberDTO;
 import muin.mvc.model.util.Constants;
 
 @Service
@@ -30,7 +27,7 @@ public class MemberServiceImpl implements MemberService {
 	private PasswordEncoder passwordEncoder; 
 	
 	@Override
-	public MemberVO findMemberById(String id) {		
+	public MemberDTO findMemberById(String id) {		
 		return memberDAO.findMemberById(id);
 	}
 
@@ -40,12 +37,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberVO> findMemberListByAddress(String address) {		
+	public List<MemberDTO> findMemberListByAddress(String address) {		
 		return memberDAO.findMemberListByAddress(address);
 	}
 
 	@Override
-	public MemberVO login(MemberVO memberVO) {
+	public MemberDTO login(MemberDTO memberVO) {
+		System.out.println(memberVO.getMemberEmail() +"/t" +memberVO.getMemberPwd());
 		return memberDAO.login(memberVO);
 	}
 
@@ -55,25 +53,25 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void updateMember(MemberVO vo) {
+	public void updateMember(MemberDTO vo) {
 		memberDAO.updateMember(vo);
 	}
     @Transactional
 	@Override
-	public void registerMember(MemberVO vo) {
+	public void registerMember(MemberDTO vo) {
     	//비밀번호 암호화
     	//System.out.println("vo.getPassword() : " + vo.getPassword());
-        String encodedPassword = passwordEncoder.encode(vo.getPassword());
+        String encodedPassword = passwordEncoder.encode(vo.getMemberPwd());
         //System.out.println("encodedPassword : " + encodedPassword);
-        vo.setPassword(encodedPassword);
+        vo.setMemberPwd(encodedPassword);
 		memberDAO.registerMember(vo);		
 		
 		//권한등록
 		/*AuthorityVO authority=new AuthorityVO(vo.getId(),"ROLE_MEMBER");
 		memberDAO.registerRole(authority);*/
-		authoritiesDAO.insertAuthority(new AuthorityVO(vo.getId(), Constants.ROLE_MEMBER));
+		authoritiesDAO.insertAuthority(new AuthorityDTO(vo.getMemberEmail(), Constants.ROLE_MEMBER));
 		if(vo.getUserType().equals("1")) {
-			authoritiesDAO.insertAuthority(new AuthorityVO(vo.getId(), Constants.ROLE_ADMIN));
+			authoritiesDAO.insertAuthority(new AuthorityDTO(vo.getMemberEmail(), Constants.ROLE_ADMIN));
 		}			
 	}
 
@@ -84,7 +82,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<AuthorityVO> selectAuthorityByUsername(String username) {
+	public List<AuthorityDTO> selectAuthorityByUsername(String username) {
 		
 		return authoritiesDAO.selectAuthorityByUserName(username);
 	}

@@ -5,15 +5,15 @@
 	<!-- 회원의 권한 검색하기 -->
 	<select id="selectAuthorityByUserName" parameterType="string" resultType="authority">
 		SELECT
-		username, role
+		member_email, role
 		FROM authorities
-		WHERE username=#{username}
+		WHERE member_email=#{memberEmail}
 	</select>
 	
 	<!-- 권한 등록 -->
 	<insert id="insertAuthority" parameterType="authority">
 		INSERT
-		INTO authorities(username, role)
-		VALUES (#{username},#{role})
+		INTO authorities(member_email, role)
+		VALUES (#{memberEmail} ,#{role})
 	</insert>
 </mapper>

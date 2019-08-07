@@ -2,23 +2,23 @@ package muin.mvc.model.dao;
 
 import java.util.List;
 
-import muin.mvc.model.dto.MemberVO;
+import muin.mvc.model.dto.MemberDTO;
 
 public interface MemberDAO {
 
-	MemberVO findMemberById(String id);
+	MemberDTO findMemberById(String id);
 
 	List<String> getAddressList();
 
-	List<MemberVO> findMemberListByAddress(String address);
+	List<MemberDTO> findMemberListByAddress(String address);
 
-	MemberVO login(MemberVO memberVO);
+	MemberDTO login(MemberDTO memberVO);
 
 	int getMemberCount();
 
-	void updateMember(MemberVO vo);
+	void updateMember(MemberDTO vo);
 
-	void registerMember(MemberVO vo);
+	void registerMember(MemberDTO vo);
 
 	int idcheck(String id);
 

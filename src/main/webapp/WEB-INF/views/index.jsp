@@ -31,7 +31,7 @@
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication var="mvo" property="principal" /> 
-	<b>${mvo.name}님 환영합니다.</b><p>
+	<b>${mvo.memberName}님 환영합니다.</b><p>
 	
 	<!-- 
 		authentication의 getPrincipal().getName() ::

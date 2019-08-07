@@ -9,7 +9,7 @@
 <body>
 <h2>MEMBER SEARCH USING ID</h2>
 <form action="${pageContext.request.contextPath}/member/findMember">
-ID : <input type="text" name="id">
+ID : <input type="text" name="memberEmail">
 <input type="submit" value="search">
 </form>
 </body>

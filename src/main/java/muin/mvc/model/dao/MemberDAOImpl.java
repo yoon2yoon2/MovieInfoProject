@@ -2,12 +2,13 @@ package muin.mvc.model.dao;
 
 import java.util.List;
 
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import muin.mvc.model.dto.MemberVO;
+import muin.mvc.model.dto.MemberDTO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -15,7 +16,7 @@ public class MemberDAOImpl implements MemberDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public MemberVO findMemberById(String id){
+	public MemberDTO findMemberById(String id){
 		return sqlSession.selectOne("memberMapper.findMemberById",id);
 	}
 	@Override
@@ -23,11 +24,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectList("memberMapper.getAddressList");
 	}
 	@Override
-	public List<MemberVO> findMemberListByAddress(String address){
+	public List<MemberDTO> findMemberListByAddress(String address){
 		return sqlSession.selectList("memberMapper.findMemberListByAddress",address);
 	}
 	@Override
-	public MemberVO login(MemberVO memberVO){
+	public MemberDTO login(MemberDTO memberVO){
 		return sqlSession.selectOne("memberMapper.login",memberVO);
 	}
 	@Override
@@ -35,11 +36,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("memberMapper.getMemberCount");
 	}
 	@Override
-	public void updateMember(MemberVO vo) {
+	public void updateMember(MemberDTO vo) {
 		sqlSession.update("memberMapper.updateMember",vo);			
 	}	
 	@Override
-	public void registerMember(MemberVO vo) {
+	public void registerMember(MemberDTO vo) {
 		sqlSession.insert("memberMapper.registerMember",vo);			
 	}
 	@Override
