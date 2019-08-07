@@ -1,70 +1,17 @@
 package muin.mvc.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberVO {
-	private String id;
-	private String password;
-	private String name;
-	private String address;
-	
-	private String userType;
-
-	public MemberVO(String id, String password, String name, String address, String userType) {
-		super();
-		this.id = id;
-		this.password = password;
-		this.name = name;
-		this.address = address;
-		this.userType = userType;
-	}
-
-	public MemberVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getUserType() {
-		return userType;
-	}
-
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address
-				+ ", userType=" + userType + "]";
-	}	
+	private long memberId;            //회원 아이디
+	private String memberPwd;         //회원 비밀번호
+	private String memberName;        //회원 이름
+	private String memberEmail;       //회원 이메일
 }
