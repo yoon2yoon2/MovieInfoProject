@@ -25,8 +25,7 @@ $(document).ready(function(){
 		if(checkResultmemberId==""){
 			alert("아이디 중복확인을 하세요");
 			return false;
-		}		
-		alert(11)
+		}	
 	});//submit
 	
 	

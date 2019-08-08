@@ -10,6 +10,7 @@
 		<typeAlias type="muin.mvc.model.dto.MemberDTO" alias="member"/>
 		<typeAlias type="muin.mvc.model.dto.AuthorityDTO" alias="authority"/>
 		<typeAlias type="muin.mvc.model.dto.RecommendDTO" alias="recommend"/>
+		<typeAlias type="muin.mvc.model.dto.MovieDTO" alias="movie"/>
 	</typeAliases>
 	
 	<mappers>

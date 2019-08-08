@@ -1,11 +1,15 @@
 package muin.mvc.model.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import muin.mvc.model.dto.MovieDTO;
 import muin.mvc.model.dto.RecommendDTO;
 import muin.mvc.model.service.RecommendService;
 
@@ -17,6 +21,14 @@ public class RecommendController {
 	
 	@RequestMapping("/recommend/main")
 	public void recommendMain() {}
+	
+	@RequestMapping("/recommend/select")
+	@ResponseBody
+	public List<MovieDTO> selectRecommend(){
+		List<MovieDTO> list = new ArrayList<MovieDTO>();
+		list = recommendService.selectRecommend();
+		return list;
+	}
 	
 	@RequestMapping("/recommend/insert")
 	@ResponseBody

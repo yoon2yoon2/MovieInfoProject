@@ -50,6 +50,7 @@
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')">
 			<li><a href="${pageContext.request.contextPath }/member/updateForm">정보 수정 폼</a></li>
 			<li><a href="${pageContext.request.contextPath }/member/addressList">주소별 검색 하기</a></li>
+			<li><a href="${pageContext.request.contextPath}/recommend/main">영화추천별점TEST</a></li>			
 		</sec:authorize>
 		<li><a href="javascript:logout();">로그아웃</a></li>
 	</sec:authorize>
